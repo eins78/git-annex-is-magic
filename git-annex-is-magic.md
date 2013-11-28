@@ -898,6 +898,8 @@ to **sync content** between remotes.
 
 
 
+
+# **`assistant`**{data-background="http://31.media.tumblr.com/48aff1d20ba83e294a987bcf601858c9/tumblr_mgtp10uvr41rywaz8o1_500.gif" data-background-transition="slide"}
 # **`assistant`**
 
 - daemon
@@ -927,10 +929,10 @@ magic assistant # or 'magic webapp' to re-open
 # **`assistant`**: \
 internals
 
-- uses direct mode by default
-- uses only special remotes by default
+- uses **direct** mode by default
+- uses only **special** remotes by default
     - good bc. encrypted
-- apart from that, everything done manually still works!
+- apart from that, **everything done manually** still works!
 
 
 # tricks
