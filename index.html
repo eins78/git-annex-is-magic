@@ -30,19 +30,32 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-<section id="git-annex-is-magic" class="level1">
+<section id="git-annex-is-magic" class="level1" data-state="start" data-background="http://upload.wikimedia.org/wikipedia/it/0/00/Matrix_Neo.jpg">
 <h1><strong><code>git-annex</code> is magic</strong></h1>
+<blockquote>
+<p><strong>a <code>shell adventure</code></strong></p>
+</blockquote>
 </section>
-<section id="open-your-terminal" class="level1">
+<section id="open-your-terminal" class="level1" data-background="http://upload.wikimedia.org/wikipedia/commons/5/53/The.Matrix.glmatrix.1.png">
 <h1>Open your Terminal</h1>
-<p><strong>This is a <code>shell adventure</code></strong>.</p>
-<p>You can (safely) follow along<br />by typing or copying all commands in your terminal.</p>
-<p>You'll need a relatively recent Linux or Mac system, and maybe an USB stick.<br />The Stick can be simulated by any folder on the computer, so you can also try it out on a remote server or a virtual machine.</p>
-<p>Commands are lines start start with a '<strong><code>$</code></strong>' sign, which should not be included.</p>
+<blockquote>
+<p><strong>This is a <code>shell adventure</code></strong></p>
+</blockquote>
+<pre class="small"><code>You can (safely) follow along by typing or copying 
+all the commands into your terminal.
+
+You&#39;ll need a relatively recent Linux or Mac system, and maybe 
+an USB stick. The Stick can be simulated by any folder 
+on the computer, so you can also try it out on any machine.
+
+Commands are lines start start with a &#39;$&#39; sign, 
+the &#39;$&#39; is not part of the command.</code></pre>
+<blockquote>
 <p><strong>Try it out now:</strong></p>
-<pre class="shell"><code>date</code></pre>
-<pre><code>Thu Nov 28 17:36:21 CET 2013</code></pre>
-<p><code>^</code> There are snippets of the expected output, where it is important.</p>
+</blockquote>
+<pre class="shell"><code>date &quot;+%s&quot;</code></pre>
+<pre class="shell-output-date"><code>1385670018</code></pre>
+<pre class="small alt"><code>^ There are snippets of the expected output, where it is important.</code></pre>
 </section>
 <section id="alias" class="level1">
 <h1>Alias</h1>
@@ -540,18 +553,20 @@ body .reveal h1 {
 .reveal ol pre code {
   width: 120%;
 }
-.reveal pre code {
-  background: hsl(150, 0%, 17%);;
+.reveal pre code,
+.reveal blockquote {
+  font-style: normal;
+  background: hsl(150, 0%, 17%);
 }
 .reveal pre.shell code {
   background: hsl(150, 50%, 17%);;
   font-weight: 500;
 }
-.reveal pre.shell.alt code {
-  background: hsl(70, 50%, 17%);;
-}
 .reveal pre.shell code::before {
   content: "\0024\0020";
+}
+.reveal pre.alt code {
+  background: hsl(70, 50%, 17%);;
 }
 .reveal pre.small code {
   font-size: 0.75em;
@@ -560,7 +575,32 @@ body .reveal h1 {
 #alias-magicgit-annex h1 {
   font-size: 2.4em;
 }
+#gh-ribbon {
+  display: none;
+}
+html.start #gh-ribbon {
+  display: block;
+}
 </style>
+<script type="text/javascript" charset="utf-8" src="https://code.jquery.com/jquery-1.10.2.min.js">
+</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function () {
+  // clock
+  var start = false,
+    $clock=$('.shell-output-date').find('code');
+  (function updateTime() {
+    var d = parseInt(((new Date).getTime()/1000), 10);
+    $clock.html(d);
+    if (!start) {
+      start = d.toString();
+    }
+    if ((start - d) <= 100) {
+      setTimeout(updateTime, 1000);
+    }
+  }());
+});
+</script>
 
 </section>
 			</div>
@@ -606,6 +646,8 @@ body .reveal h1 {
 			});
 
 		</script>
-
+    
+    <a id="gh-ribbon" href="https://github.com/eins78/git-annex-is-magic"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+    
 	</body>
 </html>
