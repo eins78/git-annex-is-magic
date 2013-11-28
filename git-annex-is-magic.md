@@ -1,29 +1,37 @@
-# **`git-annex` is magic**{data-state="start"}
+# **`git-annex` is magic**{data-state="start" data-background="http://upload.wikimedia.org/wikipedia/it/0/00/Matrix_Neo.jpg"}
 
-#  Open your Terminal
+> **a `shell adventure`**
 
-**This is a `shell adventure`**.
+#  Open your Terminal{data-background="http://upload.wikimedia.org/wikipedia/commons/5/53/The.Matrix.glmatrix.1.png"}
 
-You can (safely) follow along \
-by typing or copying all commands in your terminal.
+> **This is a `shell adventure`**
 
-You'll need a relatively recent Linux or Mac system, 
-and maybe an USB stick. \
-The Stick can be simulated by any folder on the 
-computer, so you can also try it out 
-on a remote server or a virtual machine.
+````small
+You can (safely) follow along by typing or copying 
+all the commands into your terminal.
 
-Commands are lines start start with a '**`$`**' sign, which should not be included.
+You'll need a relatively recent Linux or Mac system, and maybe 
+an USB stick. The Stick can be simulated by any folder 
+on the computer, so you can also try it out on any machine.
 
-**Try it out now:**
-
-````shell
-date
+Commands are lines start start with a '$' sign, 
+the '$' is not part of the command.
 ````
 
-    Thu Nov 28 17:36:21 CET 2013
+> **Try it out now:**
 
-`^` There are snippets of the expected output, where it is important.
+````shell
+date "+%s"
+````
+
+````shell-output-date
+1385670018
+````
+
+````{.small .alt}
+^ There are snippets of the expected output, where it is important.
+````
+
 
 
 # Alias
@@ -898,18 +906,20 @@ body .reveal h1 {
 .reveal ol pre code {
   width: 120%;
 }
-.reveal pre code {
-  background: hsl(150, 0%, 17%);;
+.reveal pre code,
+.reveal blockquote {
+  font-style: normal;
+  background: hsl(150, 0%, 17%);
 }
 .reveal pre.shell code {
   background: hsl(150, 50%, 17%);;
   font-weight: 500;
 }
-.reveal pre.shell.alt code {
-  background: hsl(70, 50%, 17%);;
-}
 .reveal pre.shell code::before {
   content: "\0024\0020";
+}
+.reveal pre.alt code {
+  background: hsl(70, 50%, 17%);;
 }
 .reveal pre.small code {
   font-size: 0.75em;
@@ -925,3 +935,22 @@ html.start #gh-ribbon {
   display: block;
 }
 </style>
+<script type="text/javascript" charset="utf-8" src="https://code.jquery.com/jquery-1.10.2.min.js">
+</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function () {
+  // clock
+  var start = false,
+    $clock=$('.shell-output-date').find('code');
+  (function updateTime() {
+    var d = parseInt(((new Date).getTime()/1000), 10);
+    $clock.html(d);
+    if (!start) {
+      start = d.toString();
+    }
+    if ((start - d) <= 100) {
+      setTimeout(updateTime, 1000);
+    }
+  }());
+});
+</script>
