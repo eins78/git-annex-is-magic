@@ -1,4 +1,4 @@
-# **`git-annex` is magic**
+# **`git-annex` is magic**{data-state="start"}
 
 #  Open your Terminal
 
@@ -917,5 +917,11 @@ body .reveal h1 {
 }
 #alias-magicgit-annex h1 {
   font-size: 2.4em;
+}
+#gh-ribbon {
+  display: none;
+}
+html.start #gh-ribbon {
+  display: block;
 }
 </style>
