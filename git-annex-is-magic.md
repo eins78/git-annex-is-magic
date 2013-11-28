@@ -2,6 +2,9 @@
 
 > **a `shell adventure`**
 
+# \ {data-background="http://upload.wikimedia.org/wikipedia/commons/5/53/The.Matrix.glmatrix.1.png"}
+
+
 #  Open your Terminal{data-background="http://upload.wikimedia.org/wikipedia/commons/5/53/The.Matrix.glmatrix.1.png"}
 
 > **This is a `shell adventure`**
@@ -145,10 +148,10 @@ APP="/Applications/git-annex.app\
 export PATH="$PATH":"$APP"
 ````
 
-# **Save Point:** \
-check install
+# **Save Point `#1`:** \
+check install{#s1 data-background="hsl(150, 50%, 35%)" data-background-transition="slide"}
 
-- in a shell
+- in a **`shell`**
 
 ````shell
 magic version
@@ -159,7 +162,7 @@ magic version
     key/value backends: SHA256E WORM …
     remote types: git directory…
 
-- via ssh
+- via **`ssh`** (optional)
 
 ````shell
 ssh localhost 'git annex version'
@@ -167,6 +170,15 @@ ssh localhost 'git annex version'
 
     git-annex version: 5.20131117-gbd514dc
     …
+
+> **`Works?`**
+
+  ---
+
+[**`Link to this point: <#s1>`**](#/s1)
+
+  ---
+
 
 # `>` Link
 
@@ -495,15 +507,18 @@ cat foo/bar.txt # > "No such file or directory"
 magic sync
 ````
 
-# wait…, **what?**
+# wait…, **what?**{data-background="http://upload.wikimedia.org/wikipedia/tr/0/05/Matrix_yeni_nesil_ajanlar.jpg"}
 
-**`drop`ing?**
+> **`drop`ing?**
+> \
+> \
+> Isn't that a fancy word to say **`DELETE`**?
+> \
+> \
+> **is this safe?**
 
-Isn't that a fancy word to say `DELETE`?
 
-**is this safe?**
-
-# **YES it is!**
+# **YES it is safe!**
 
 (unless you use the **`--force`**)
 
@@ -533,8 +548,8 @@ git-annex: drop: 1 failed
 
 What if I just want to move a file to the stick?
 
-- **`copy --to`** a remote
-- *also:* **`move --to`**!
+- **`move --to`** a remote
+- *also:* **`copy --to`**!
     
 
 ````shell
@@ -578,7 +593,7 @@ ok
 ````
 
 
-# **Save Point**
+# **Save Point `#2`:**{#s2 data-background="hsl(150, 50%, 35%)" data-background-transition="slide"}
 
 - **OK so far?** Cool.
 
@@ -594,6 +609,15 @@ ok
     ````
 
     - `GOTO` **[init](#init)**
+
+> **`Questions?`**
+
+  ---
+
+[**`Link to this point: <#s2>`**](#/s2)
+
+  ---
+
 
 # editing Files
 
@@ -613,6 +637,10 @@ echo 'fail' > foo/bar.txt
 ````
 
     Permission denied
+
+# `editing` Files
+
+We need to unlock it first!
 
 ````shell
 magic unlock foo/bar.txt
@@ -661,16 +689,16 @@ cat foo/bar.txt
     booya
 
 
-# …"locking", eh?
+# …"locking", eh?{data-background="http://upload.wikimedia.org/wikipedia/en/a/ac/TheArchitectMatrix.jpg"}
 
-Doesn't this locking/unlocking seem complicated \
-in comparison to, say, *Dropbox*?
-
-**YES.** That is why we use ***'direct mode'***. 
+> Doesn't this locking/unlocking seem complicated \
+> in comparison to, say, *Dropbox*?
+> 
+> **YES.** That is why we use ***'direct mode'***. 
 
 # direct mode
 
-You may now **forget** the slide about locking/editing.
+You may now **forget** the slides about locking/editing.
 
 
 ````shell
@@ -691,6 +719,7 @@ All **available** files are **normal files**; \
 all **unavailable** files are **symlinks** \
 (and we can use `magic get` to make them available).
 
+**Do something:**
 
 ````shell
 echo 'pow' > foo/bar.txt
@@ -699,6 +728,8 @@ echo 'pow' > foo/bar.txt
 ````shell
 magic sync
 ````
+
+**Sync it!**
 
 ````shell
 cd "$STICK/magicfolder"
@@ -713,6 +744,8 @@ cat foo/bar.txt #
 ````
 
     pow
+
+*Note:* We could also have used **`copy --to stick`**.
 
 <!-- # conflicts
 
@@ -734,12 +767,14 @@ cat foo/bar.txt # > "pow"
 # special remotes
 
 **Usage:** If you just want to copy somewhere,
-for *backup* or *transfer*.  \
-(If you'll look at the directory, 
-it will be a bunch of object files.)
+for *backup* or *transfer*.
 
-Special remotes are [encrypted][encryption] 
-by default, so you have to explicitly turn it off 
+If you'll look at the directory, 
+it will just be a bunch of object files.
+
+Special remotes are (`GPG`) [encrypted][encryption] 
+by default, \
+so you have to explicitly turn it off 
 (`encryption=none`).
 
 Once setup with **`initremote`**, \
@@ -748,6 +783,8 @@ use them like any other remote – it *just works*™.
 
 # encrypted folder in Dropbox
 
+The remote will have a name and a GPG key.
+
 ```shell
 BOX=dropbox # how to call the remote
 ```
@@ -755,6 +792,8 @@ BOX=dropbox # how to call the remote
 ```shell
 KEY=965113EA # your GPG key id
 ```
+
+**Make a new folder in the Dropbox:**
 
 ```shell
 mkdir -p ~/Dropbox/BACKUP/magic/
@@ -775,7 +814,16 @@ initremote dropbox (encryption setup)
 (hybrid cipher with gpg key 3771835A3BADB56D) ok
 ```
 
-# encrypt and `copy` to Dropbox
+***Alternative** if you don't have a key handy (unecrypted):*
+
+```{.shell .alt}
+magic initremote $BOX type=directory \
+directory=~/Dropbox/BACKUP/magic/ \
+encryption=none
+```
+
+
+# encrypted `copy` to Dropbox
 
 Like any other remote, just a password prompt for the key.
 
@@ -815,12 +863,12 @@ ok
 they meta data. \
 obviously very important.
 
-- default: **`SHA256`** hash plus the file extension
+- default is **`SHA256E`**, a file hash plus the file extension
 
 - **`WORM`**: alternative if you don't want hashing, uses just file name, date, etc. usefull if:
       a) you trust the disk *or*
       b) you don't care
-      c) performance (2 TB @ RPi)
+      c) performance (2 TB Videos @ Raspberry Pi)
 
 ````shell
 cd ~/magicfolder
@@ -829,6 +877,26 @@ cd ~/magicfolder
 ```shell
 echo '* annex.backend=WORM' > .gitattributes
 ```
+
+# **Save Point `#3`:**{#s3 data-background="hsl(150, 50%, 35%)" data-background-transition="slide"}
+
+Use the **direct mode for normal folders**, \
+and the indirect mode for normal git repos + magic.
+
+Use **`sync`** to **sync meta data** between remotes.
+
+Use **`get`**, **`drop`**, **`copy`** and **`move`** 
+to **sync content** between remotes.
+
+> **`Questions?`**
+
+  ---
+
+[**`Link to this point: <#s3>`**](#/s3)
+
+  ---
+
+
 
 # **`assistant`**
 
@@ -846,10 +914,10 @@ magic assistant # or 'magic webapp' to re-open
 ```
 
 
-# screenshot
+<!-- # screenshot
 
 ![Git Annex Assistant](git-annex-assistant.png)
-
+ -->
 
 # screenshot
 
@@ -889,15 +957,27 @@ internals
 [sremotes]: <http://git-annex.branchable.com/special_remotes/>
 
 
+# fin
+
+made with [**`pandoc`**](http://johnmacfarlane.net/pandoc/) and [**`reveal.js`**](http://lab.hakim.se/reveal-js/).
+
+
+<!-- some styles and scripts-->
+
 <style>
 body .reveal, body .reveal h1 {
   font-family: 'Source Sans Pro';
 }
-body .reveal h1 {
-  font-weight: 600;
-}
 .reveal code {
   font-family: 'Source Code Pro';
+}
+hr {
+  width: 33.34%;
+  border: none;
+  border-bottom: 0.2em solid;
+}
+body .reveal h1 {
+  font-weight: 600;
 }
 .reveal pre {
   font-size: 1em;
