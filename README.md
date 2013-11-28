@@ -1,4 +1,8 @@
-git-annex-is-magic
+[git-annex-is-magic][URL]
 ==================
 
-a shell adventure slideshow about git-annex
+> a shell adventure slideshow about git-annex
+
+slideshow here: [**`code.178.is/git-annex-is-magic`**][URL]
+
+[URL]: <http://code.178.is/git-annex-is-magic/>
