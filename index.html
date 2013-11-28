@@ -1,44 +1,611 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Git-annex-is-magic by eins78</title>
+<!-- Quick and dirty fork off reveal.js 2.5.0 + pandoc vars -->
+<html lang="en">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Git-annex-is-magic</h1>
-        <p>a shell adventure slideshow about git-annex</p>
-
-        <p class="view"><a href="https://github.com/eins78/git-annex-is-magic">View the Project on GitHub <small>eins78/git-annex-is-magic</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/eins78/git-annex-is-magic/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/eins78/git-annex-is-magic/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/eins78/git-annex-is-magic">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="git-annex-is-magic" class="anchor" href="#git-annex-is-magic"><span class="octicon octicon-link"></span></a>git-annex-is-magic</h1>
-
-<p>a shell adventure slideshow about git-annex</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/eins78">eins78</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
     
-  </body>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js-2.5.0/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal.js-2.5.0/css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js-2.5.0/lib/css/zenburn.css">
+    
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic,600italic|Source+Code+Pro:400,600,500' rel='stylesheet' type='text/css'>
+
+		<!--[if lt IE 9]>
+		<script src="reveal.js-2.5.0/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+<section id="git-annex-is-magic" class="level1">
+<h1><strong><code>git-annex</code> is magic</strong></h1>
+</section>
+<section id="open-your-terminal" class="level1">
+<h1>Open your Terminal</h1>
+<p><strong>This is a <code>shell adventure</code></strong>.</p>
+<p>You can (safely) follow along<br />by typing or copying all commands in your terminal.</p>
+<p>You'll need a relatively recent Linux or Mac system, and maybe an USB stick.<br />The Stick can be simulated by any folder on the computer, so you can also try it out on a remote server or a virtual machine.</p>
+<p>Commands are lines start start with a '<strong><code>$</code></strong>' sign, which should not be included.</p>
+<p><strong>Try it out now:</strong></p>
+<pre class="shell"><code>date</code></pre>
+<pre><code>Thu Nov 28 17:36:21 CET 2013</code></pre>
+<p><code>^</code> There are snippets of the expected output, where it is important.</p>
+</section>
+<section id="alias" class="level1">
+<h1>Alias</h1>
+<p>For educational purposes, we <strong>define an alias</strong>,<br />so it is more clear when we are using <code>git</code> or <code>git annex</code>.</p>
+<pre class="shell"><code>alias magic=&quot;git annex&quot;</code></pre>
+<p>We will be defining more variables in this adventure,<br />so make sure to <strong>not close your shell</strong> (or edit <code>.bashrc</code>).</p>
+</section>
+<section id="download" class="level1">
+<h1>Download</h1>
+<p><strong>Linux 32 Bit:</strong></p>
+<pre class="shell"><code>cd ; wget &#39;http://bit.ly/tuxmagic32&#39;</code></pre>
+<p><!-- 'http://downloads.kitenet.net/\
+  git-annex/linux/current/\
+  git-annex-standalone-i386.tar.gz' --></p>
+<p><strong>Linux 64 Bit:</strong></p>
+<pre class="shell"><code>cd ; wget &#39;http://bit.ly/tuxmagic64&#39;</code></pre>
+<p><!-- 'http://downloads.kitenet.net/\
+  git-annex/linux/current/\
+  git-annex-standalone-i386.tar.gz' --></p>
+<p><strong>OS X 10.9 Mavericks:</strong></p>
+<pre class="shell"><code>curl &#39;http://bit.ly/macmagic9&#39; &gt; ~/anx.dmg</code></pre>
+<p><!-- 'http://downloads.kitenet.net/\
+  git-annex/OSX/current/10.9_Mavericks/\
+  git-annex.dmg' --></p>
+<p><strong>OS X 10.8.2 Mountain Lion:</strong></p>
+<pre class="shell"><code>curl &#39;http://bit.ly/macmagic8&#39;  &gt; ~/anx.dmg.bz2</code></pre>
+<pre class="shell"><code>cd ~; tar xvzf anx.dmg.bz2</code></pre>
+<p><!-- 'http://downloads.kitenet.net/\
+  git-annex/OSX/current/10.8.2_Mountain_Lion/\
+  git-annex.dmg.bz2' --></p>
+<p><strong>OS X 10.7.5 Lion:</strong></p>
+<pre class="shell"><code>curl &#39;http://bit.ly/macmagic7&#39; &gt; ~/anx.dmg</code></pre>
+<p><!-- 'http://downloads.kitenet.net/\
+  git-annex/OSX/current/10.7.5_Lion/\
+  git-annex.dmg' --></p>
+</section>
+<section id="install" class="level1">
+<h1>Install</h1>
+<p><strong>Linux:</strong></p>
+<pre class="shell"><code>tar xvzf git-annex-standalone-i386.tar.gz</code></pre>
+<pre class="shell"><code>APP=&quot;~/git-annex.linux&quot;</code></pre>
+<p><strong>OS X:</strong></p>
+<pre class="shell"><code>open ~/anx.dmg</code></pre>
+<p>Drag and Drop App to <code>/Applications</code></p>
+<pre class="shell"><code>APP=&quot;/Applications/git-annex.app\
+/Contents/MacOS&quot;</code></pre>
+</section>
+<section id="path" class="level1">
+<h1><code>$PATH</code></h1>
+<ul class="incremental">
+<li><p>It should work via <strong><code>shell</code></strong> and <strong><code>ssh</code></strong>!</p></li>
+<li>Linux: at beginning of '/etc/bash.bashrc'!
+<ul class="incremental">
+<li>user must have shell <code>/bin/bash</code> in <code>/etc/passwd</code></li>
+</ul></li>
+<li>OSX: ~/.bashrc and ??? for ssh</li>
+<li><p>If it doesn't work: <strong><code>~/.bashrc</code></strong> is enough for this adventure</p></li>
+</ul>
+<pre class="shell"><code>export PATH=&quot;$PATH&quot;:&quot;$APP&quot;</code></pre>
+</section>
+<section id="save-point-check-install" class="level1">
+<h1><strong>Save Point:</strong><br />check install</h1>
+<ul class="incremental">
+<li>in a shell</li>
+</ul>
+<pre class="shell"><code>magic version</code></pre>
+<pre><code>git-annex version: 5.20131117-gbd514dc
+build flags: Assistant Webapp …
+key/value backends: SHA256E WORM …
+remote types: git directory…</code></pre>
+<ul class="incremental">
+<li>via ssh</li>
+</ul>
+<pre class="shell"><code>ssh localhost &#39;git annex version&#39;</code></pre>
+<pre><code>git-annex version: 5.20131117-gbd514dc
+…</code></pre>
+</section>
+<section id="link" class="level1">
+<h1><code>&gt;</code> Link</h1>
+<p>Hardcore install.</p>
+<p>Do this <strong>only if everything else failed</strong><br /><strong><em>or</em></strong> you are on a Mac and want to use it over <code>ssh</code>.</p>
+<pre class="shell"><code>sudo ln -s &quot;$APP/git-annex{,-shell} /usr/bin/.&quot;</code></pre>
+<pre class="shell"><code>sudo ln -s &quot;$APP/bundle /usr/bin/bundle&quot;</code></pre>
+</section>
+<section id="workflow" class="level1">
+<h1>Workflow</h1>
+<ol class="incremental" type="1">
+<li><code>init</code></li>
+<li><code>add $FILES</code></li>
+<li><code>clone</code></li>
+<li>setup &amp; <code>sync</code></li>
+<li><code>use</code></li>
+</ol>
+</section>
+<section id="init" class="level1">
+<h1><strong><code>magic init</code></strong></h1>
+<p>We start with a new folder. This could be your new Dropbox.</p>
+<pre class="shell"><code>mkdir ~/magicfolder</code></pre>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>git init</code></pre>
+<pre><code>Initialized empty Git repository …</code></pre>
+<pre class="shell"><code>magic init &#39;My Laptop&#39;</code></pre>
+<pre><code>init My Laptop ok
+(Recording state in git...)</code></pre>
+</section>
+<section id="magic-add" class="level1">
+<h1><strong><code>magic add</code></strong></h1>
+<p>We make a sub-folder with a new text file inside.</p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>mkdir foo &amp;&amp; echo &#39;simsalabim&#39; &gt; foo/bar.txt</code></pre>
+<pre class="shell"><code>magic add foo/bar.txt</code></pre>
+<pre><code>add foo/bar.txt (checksum...) ok
+(Recording state in git...)</code></pre>
+<pre class="shell"><code>git commit -m &#39;added&#39;</code></pre>
+<pre><code>[master (root-commit) 67a2114] added
+ 1 file changed, 1 insertion(+)
+ create mode 120000 foo/bar.txt</code></pre>
+</section>
+<section id="magic-sync" class="level1">
+<h1><strong><code>magic sync</code></strong></h1>
+<p>To make things easier, you can always use <strong><code>sync</code></strong>.</p>
+<p>Should be done <strong>after every change</strong> (or in intervals w/ <code>cron</code>).</p>
+<p>It does the following:</p>
+<ul class="incremental">
+<li>auto-<strong>commit</strong></li>
+<li><strong>push</strong> to all remotes</li>
+<li><strong>fetch</strong> from all remotes</li>
+<li><strong>merge</strong> with all remotes</li>
+</ul>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>echo &#39;1&#39; &gt; one.txt</code></pre>
+<pre class="shell"><code>magic sync</code></pre>
+<pre><code>commit  
+ok</code></pre>
+</section>
+<section id="git-clone" class="level1">
+<h1><strong><code>git clone</code></strong></h1>
+<p>Now clone this repo using any <em>git transport</em> (<code>file</code>, <code>ssh</code>, <code>https</code>,…).</p>
+<p>Note that <strong><code>file</code></strong> works with everything you can somehow mount,<br />including <strong>Dropbox</strong>.</p>
+<pre class="shell"><code>STICK=&quot;/Volumes/USBSTICK&quot;
+</code></pre>
+<p><strong>Clone:</strong></p>
+<pre class="shell"><code>git clone ~/magicfolder &quot;$STICK/magicfolder&quot;</code></pre>
+<p><em>Alternative Clone: <strong><code>SSH</code></strong></em></p>
+<pre class="shell small alt"><code>git clone user@host:magicfolder &quot;$STICK/magicfolder&quot;</code></pre>
+<p>Init:</p>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<pre class="shell"><code>magic init &#39;My USB Stick&#39;</code></pre>
+<pre><code>init My USB Stick 
+ok
+(Recording state in git...)</code></pre>
+</section>
+<section id="magic-sync-2" class="level1">
+<h1><strong><code>magic sync</code></strong> #2</h1>
+<pre class="shell"><code>magic sync</code></pre>
+<pre><code>(merging origin/git-annex into git-annex...)
+(Recording state in git...)
+commit  
+ok
+pull origin 
+ok
+push origin 
+Writing objects: 100% (8/8), 776 bytes …
+ * [new branch] git-annex -&gt; synced/git-annex
+ok</code></pre>
+</section>
+<section id="look-what-weve-got" class="level1">
+<h1>look what we've got</h1>
+<p>We seem to have our file…</p>
+<pre class="shell"><code>ls foo/bar.txt</code></pre>
+<pre><code>foo/bar.txt</code></pre>
+</section>
+<section id="connect-the-remotes" class="level1">
+<h1>connect the remotes</h1>
+<p>Standard git setup.</p>
+<p><strong>For the Laptop:</strong></p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>git remote add stick &quot;$STICK/magicfolder&quot;
+</code></pre>
+<p><strong>For the stick:</strong></p>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<p>The <code>origin</code> remote is not used by <code>magic</code>, can be removed or not.</p>
+<pre class="shell"><code>git remote remove origin # optional</code></pre>
+<pre class="shell"><code>git remote add laptop ~/magicfolder</code></pre>
+</section>
+<section id="magic-sync-3" class="level1">
+<h1><strong><code>magic sync</code></strong> #3</h1>
+<p>With the configured remotes, <strong><code>sync</code></strong> now also does <strong><code>pull</code></strong> and <strong><code>push</code></strong>.</p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>magic sync</code></pre>
+<pre class="small"><code>(merging synced/git-annex into git-annex...)
+commit  
+ok
+pull stick 
+From /Volumes/USBSTICK/magicfolder
+ * [new branch] git-annex  -&gt; stick/git-annex
+ * [new branch] master     -&gt; stick/master
+ * [new branch] synced/master -&gt; stick/synced/master
+ok</code></pre>
+</section>
+<section id="now-what" class="level1">
+<h1>Now what?</h1>
+<p>We have just cloned the meta data.</p>
+<p>All the files and folder are on the stick, <strong>as symlinks</strong>!</p>
+<p><strong><code>magic</code></strong> takes care of the symlinks.</p>
+<p>Metadata includes info about the remotes, and what files they have <strong>available</strong>!</p>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<pre class="shell"><code>ls foo/bar.txt # foo/bar.txt</code></pre>
+</section>
+<section id="just-symlinks" class="level1">
+<h1>Just symlinks</h1>
+<p>We don't have the file's <strong>content</strong> yet,<br />because we have not transfered it (just it's <em>meta data</em>).</p>
+<p>We'll call this: &quot;The file is <strong>unavailable</strong>&quot;.</p>
+<pre class="shell"><code>cat foo/bar.txt</code></pre>
+<pre><code>cat: foo/bar.txt: No such file or directory</code></pre>
+</section>
+<section id="just-symlinks-1" class="level1">
+<h1>Just symlinks</h1>
+<p>If we get a listing, we see where the symlinks points to<br />(but the object file it points to – the <em>content</em> — is just not there).</p>
+<pre class="shell"><code>ls -l foo/bar.txt</code></pre>
+<pre><code>lrwxrwxrwx  1 mfa  staff  191 Nov 28 14:02 
+foo/bar.txt -&gt; ../.git/annex/objects/FP/vj/
+SHA256E-s11--9062535d58….txt/
+SHA256E-s11--9062535d58….txt</code></pre>
+</section>
+<section id="magic-get-a-file" class="level1">
+<h1><strong><code>magic get</code></strong> a file</h1>
+<p>So, how do we get the content?</p>
+<p>To manually transfer files, use <code>get</code>.</p>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<pre class="shell"><code>magic get foo/bar.txt
+cat foo/bar.txt</code></pre>
+<pre><code>simsalabim</code></pre>
+</section>
+<section id="magic-drop-a-file" class="level1">
+<h1><strong><code>magic drop</code></strong> a file</h1>
+<p>To delete a file just from a remote, use <code>drop</code>.</p>
+<p>This is useful for making free space on Laptops with small hard drives, etc.</p>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<pre class="shell"><code>magic drop foo/bar.txt</code></pre>
+<pre class="shell"><code>cat foo/bar.txt # &gt; &quot;No such file or directory&quot;</code></pre>
+<pre class="shell"><code>magic sync</code></pre>
+</section>
+<section id="wait-what" class="level1">
+<h1>wait…, <strong>what?</strong></h1>
+<p><strong><code>drop</code>ing?</strong></p>
+<p>Isn't that a fancy word to say <code>DELETE</code>?</p>
+<p><strong>is this safe?</strong></p>
+</section>
+<section id="yes-it-is" class="level1">
+<h1><strong>YES it is!</strong></h1>
+<p>(unless you use the <strong><code>--force</code></strong>)</p>
+<p>This is why we want to have a record of all files and in which remotes they are.</p>
+<p>Let's try 'dropping' it on our Laptop, too:</p>
+<pre class="shell"><code>cd ~/magicfolder/</code></pre>
+<pre class="shell"><code>magic drop foo/bar.txt</code></pre>
+<pre class="small"><code>drop foo/bar.txt (merging synced/git-annex into git-annex...)
+(unsafe) 
+  Could only verify the existence of 0 out of 1 necessary copies
+  (Use --force to override this check, or adjust annex.numcopies.)
+failed
+git-annex: drop: 1 failed</code></pre>
+</section>
+<section id="ok-lets-move" class="level1">
+<h1>ok, let's <strong><code>move</code></strong></h1>
+<p>What if I just want to move a file to the stick?</p>
+<ul class="incremental">
+<li><strong><code>copy --to</code></strong> a remote</li>
+<li><em>also:</em> <strong><code>move --to</code></strong>!</li>
+</ul>
+<pre class="shell"><code>cd ~/magicfolder/</code></pre>
+<pre class="shell"><code>magic copy foo/bar.txt --to stick</code></pre>
+<pre class="small"><code>copy foo/bar.txt (to stick...) 
+SHA256E-s11--9062535d58….txt
+  11 100%    0.00kB/s    0:00:00 (xfer#1, to-check=0/1)
+
+sent 173 bytes  received 42 bytes  430.00 bytes/sec
+total size is 11  speedup is 0.05
+ok
+(Recording state in git...)</code></pre>
+</section>
+<section id="magic-whereis" class="level1">
+<h1><strong><code>magic whereis</code></strong></h1>
+<p>We can also just get a list of a file availability in other remotes,<br />without trying to drop it:</p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>magic whereis foo/bar.txt</code></pre>
+<pre class="small"><code>whereis foo/bar.txt (2 copies) 
+    ab8aad2f-f87e-440e-baef-… -- here (My Laptop)
+    f7feb954-0250-4117-a368-… -- stick (My USB Stick)
+ok</code></pre>
+</section>
+<section id="save-point" class="level1">
+<h1><strong>Save Point</strong></h1>
+<ul class="incremental">
+<li><p><strong>OK so far?</strong> Cool.</p></li>
+<li><p><strong>Not ok?</strong></p>
+<ul class="incremental">
+<li>remove all</li>
+</ul>
+<pre class="shell small"><code>cd ; \
+sudo rm -rf \
+~/magicfolder \
+&quot;$STICK/magicfolder&quot; </code></pre>
+<ul class="incremental">
+<li><code>GOTO</code> <strong><a href="#init">init</a></strong></li>
+</ul></li>
+</ul>
+</section>
+<section id="editing-files" class="level1">
+<h1>editing Files</h1>
+<p>Files are locked by default!</p>
+<p>Also, while the <strong>content</strong> is not tracked in git by <strong><code>magic</code></strong>,<br />you can still commit with git, and <strong><code>magic</code></strong> will take of it (w/ <code>git-hooks</code>).</p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>echo &#39;fail&#39; &gt; foo/bar.txt</code></pre>
+<pre><code>Permission denied</code></pre>
+<pre class="shell"><code>magic unlock foo/bar.txt</code></pre>
+<pre class="shell"><code>echo &#39;booya&#39; &gt; foo/bar.txt  # No error!
+</code></pre>
+<p>Now &quot;commit and push&quot;.</p>
+<pre class="shell"><code>magic add foo/bar.txt</code></pre>
+<pre class="shell"><code>git commit -m &#39;changed&#39;</code></pre>
+<pre class="shell"><code>magic sync</code></pre>
+</section>
+<section id="syncing-the-edits" class="level1">
+<h1>Syncing the edits</h1>
+<p>To get the file to the stick,</p>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<p>we <strong><code>sync</code></strong>, which fetches the meta data with <code>git</code><br />and then <strong><code>get .</code></strong> <em>(everything)</em> to actually transfer the file.</p>
+<pre class="shell"><code>magic sync &amp;&amp; magic get .</code></pre>
+<pre class="shell"><code>cat foo/bar.txt</code></pre>
+<pre><code>booya</code></pre>
+</section>
+<section id="locking-eh" class="level1">
+<h1>…&quot;locking&quot;, eh?</h1>
+<p>Doesn't this locking/unlocking seem complicated<br />in comparison to, say, <em>Dropbox</em>?</p>
+<p><strong>YES.</strong> That is why we use <strong><em>'direct mode'</em></strong>.</p>
+</section>
+<section id="direct-mode" class="level1">
+<h1>direct mode</h1>
+<p>You may now <strong>forget</strong> the slide about locking/editing.</p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>magic direct</code></pre>
+<pre><code>…
+direct  ok</code></pre>
+</section>
+<section id="direct-mode-1" class="level1">
+<h1>direct mode</h1>
+<p>All <strong>available</strong> files are <strong>normal files</strong>;<br />all <strong>unavailable</strong> files are <strong>symlinks</strong><br />(and we can use <code>magic get</code> to make them available).</p>
+<pre class="shell"><code>echo &#39;pow&#39; &gt; foo/bar.txt</code></pre>
+<pre class="shell"><code>magic sync</code></pre>
+<pre class="shell"><code>cd &quot;$STICK/magicfolder&quot;</code></pre>
+<pre class="shell"><code>magic sync &amp;&amp; magic get .</code></pre>
+<pre class="shell"><code>cat foo/bar.txt #</code></pre>
+<pre><code>pow</code></pre>
+<!-- # conflicts
+
+````shell
+cd ~/magicfolder
+echo 'author: alice' > foo/bar.txt
+
+cd "$STICK/magicfolder"
+magic direct # > "direct  ok"
+echo 'author: bob' > foo/bar.txt
+
+magic sync
+
+magic sync && magic get .
+cat foo/bar.txt # > "pow"
+```` -->
+
+
+</section>
+<section id="special-remotes" class="level1">
+<h1>special remotes</h1>
+<p><strong>Usage:</strong> If you just want to copy somewhere, for <em>backup</em> or <em>transfer</em>.<br />(If you'll look at the directory, it will be a bunch of object files.)</p>
+<p>Special remotes are <a href="http://git-annex.branchable.com/encryption/">encrypted</a> by default, so you have to explicitly turn it off (<code>encryption=none</code>).</p>
+<p>Once setup with <strong><code>initremote</code></strong>,<br /><strong><code>magic</code></strong> can use them like any other remote – it <em>just works</em>™.</p>
+</section>
+<section id="encrypted-folder-in-dropbox" class="level1">
+<h1>encrypted folder in Dropbox</h1>
+<pre class="shell"><code>BOX=dropbox # how to call the remote</code></pre>
+<pre class="shell"><code>KEY=965113EA # your GPG key id</code></pre>
+<pre class="shell"><code>mkdir -p ~/Dropbox/BACKUP/magic/</code></pre>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>magic initremote $BOX type=directory \
+directory=~/Dropbox/BACKUP/magic/ \
+keyid=$KEY</code></pre>
+<pre><code>initremote dropbox (encryption setup) 
+(hybrid cipher with gpg key 3771835A3BADB56D) ok</code></pre>
+</section>
+<section id="encrypt-and-copy-to-dropbox" class="level1">
+<h1>encrypt and <code>copy</code> to Dropbox</h1>
+<p>Like any other remote, just a password prompt for the key.</p>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>magic copy . --to $BOX</code></pre>
+<pre class="small"><code>copy foo/bar.txt (gpg) 
+You need a passphrase to unlock the secret key for
+user: &quot;Max F. Albrecht &lt;1@178.is&gt;&quot;
+4096-bit RSA key, ID 965113EA, created 2013 (main key ID FOO)
+
+(to dropbox...)
+ok</code></pre>
+</section>
+<section id="more-special-remotes" class="level1">
+<h1>more special remotes</h1>
+<ul class="incremental">
+<li><code>xmpp</code> (jabber!)</li>
+<li><code>rsync</code></li>
+<li><code>bup</code></li>
+<li><code>web</code></li>
+<li><code>webdav</code></li>
+<li>(Amazon) S3</li>
+<li>Amazon Glacier</li>
+<li><a href="http://git-annex.branchable.com/special_remotes/">More in the Docs</a></li>
+</ul>
+</section>
+<section id="more-backends" class="level1">
+<h1>more backends</h1>
+<ul class="incremental">
+<li><p>how files are matched with they meta data.<br />obviously very important.</p></li>
+<li><p>default: <strong><code>SHA256</code></strong> hash plus the file extension</p></li>
+<li><strong><code>WORM</code></strong>: alternative if you don't want hashing, uses just file name, date, etc. usefull if:
+<ol class="incremental" type="a">
+<li>you trust the disk <em>or</em></li>
+<li>you don't care</li>
+<li>performance (2 TB @ RPi)</li>
+</ol></li>
+</ul>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>echo &#39;* annex.backend=WORM&#39; &gt; .gitattributes</code></pre>
+</section>
+<section id="assistant" class="level1">
+<h1><strong><code>assistant</code></strong></h1>
+<ul class="incremental">
+<li>daemon</li>
+<li>watches folders (also: just <strong><code>magic watch</code></strong>)</li>
+<li>show repos, remotes, transfers</li>
+<li>remote settings</li>
+</ul>
+<pre class="shell"><code>cd ~/magicfolder</code></pre>
+<pre class="shell"><code>magic assistant # or &#39;magic webapp&#39; to re-open</code></pre>
+</section>
+<section id="screenshot" class="level1">
+<h1>screenshot</h1>
+<figure>
+<img src="git-annex-assistant.png" alt="Git Annex Assistant" /><figcaption>Git Annex Assistant</figcaption>
+</figure>
+</section>
+<section id="screenshot-1" class="level1">
+<h1>screenshot</h1>
+<figure>
+<img src="git-annex-assistant2.png" alt="Git Annex Assistant (watching)" /><figcaption>Git Annex Assistant (watching)</figcaption>
+</figure>
+</section>
+<section id="assistant-internals" class="level1">
+<h1><strong><code>assistant</code></strong>:<br />internals</h1>
+<ul class="incremental">
+<li>uses direct mode by default</li>
+<li>uses only special remotes by default
+<ul class="incremental">
+<li>good bc. encrypted</li>
+</ul></li>
+<li>apart from that, everything done manually still works!</li>
+</ul>
+</section>
+<section id="tricks" class="level1">
+<h1>tricks</h1>
+<ul class="incremental">
+<li><p><strong><code>--fast</code></strong> do stuff faster.<br /> For example, rely on local data instead of updating before checking.</p></li>
+<li><p><strong><code>magic fsck</code></strong>: for the data conscious</p></li>
+<li><p><strong><code>magic describe</code></strong>: change the description<br /> that was set with <strong><code>magic init 'My Laptop'</code></strong>.</p></li>
+</ul>
+</section>
+<section id="links" class="level1">
+<h1>Links:</h1>
+<ul class="incremental">
+<li><a href="http://git-annex.branchable.com/git-annex/"><code>manpage</code></a></li>
+<li><a href="http://git-annex.branchable.com/special_remotes/">special remotes</a></li>
+<li><a href="http://git-annex.branchable.com/encryption/">encryption</a></li>
+</ul>
+<style>
+body .reveal, body .reveal h1 {
+  font-family: 'Source Sans Pro';
+}
+body .reveal h1 {
+  font-weight: 600;
+}
+.reveal code {
+  font-family: 'Source Code Pro';
+}
+.reveal pre {
+  font-size: 1em;
+}
+.reveal ul pre code, 
+.reveal ol pre code {
+  width: 120%;
+}
+.reveal pre code {
+  background: hsl(150, 0%, 17%);;
+}
+.reveal pre.shell code {
+  background: hsl(150, 50%, 17%);;
+  font-weight: 500;
+}
+.reveal pre.shell.alt code {
+  background: hsl(70, 50%, 17%);;
+}
+.reveal pre.shell code::before {
+  content: "\0024\0020";
+}
+.reveal pre.small code {
+  font-size: 0.75em;
+  font-weight: 500;
+}
+#alias-magicgit-annex h1 {
+  font-size: 2.4em;
+}
+</style>
+
+</section>
+			</div>
+
+		</div>
+
+		<script src="reveal.js-2.5.0/lib/js/head.min.js"></script>
+		<script src="reveal.js-2.5.0/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+        
+        width: 1024,
+        height: 1024,
+        // height: 786,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.05,
+        maxScale: 10.0,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
 </html>
