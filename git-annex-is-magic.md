@@ -935,7 +935,7 @@ internals
 - apart from that, **everything done manually** still works!
 
 
-# tricks
+# tipps & tricks
 
 - **`--fast`** do stuff faster. \
   For example, rely on local data instead of updating before checking.
@@ -944,6 +944,8 @@ internals
 
 - **`magic describe`**: change the description \
   that was set with **`magic init 'My Laptop'`**.
+
+- always try to use the faster machine for hashing…
 
 # Links:
 
