@@ -193,7 +193,7 @@ sudo ln -s "$APP/git-annex{,-shell} /usr/bin/."
 ````
 
 ````shell
-sudo ln -s "$APP/bundle /usr/bin/bundle"
+sudo ln -s "$APP/bundle /usr/bin/bundle" # on Linux, there is no $APP/bundle
 ````
 
 # Workflow
