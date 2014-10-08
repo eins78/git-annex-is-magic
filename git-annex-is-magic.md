@@ -307,7 +307,7 @@ STICK="/Volumes/USBSTICK"
 **Clone:**
 
 ````shell
-git clone ~/magicfolder "$STICK/magicfolder"
+git clone file://$HOME/magicfolder "$STICK/magicfolder"
 ````
 
 *Alternative Clone: **`SSH`***
