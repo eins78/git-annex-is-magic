@@ -937,7 +937,7 @@ internals
 - apart from that, **everything done manually** still works!
 
 
-# tipps & tricks
+# tips & tricks
 
 - **`--fast`** do stuff faster. \
   For example, rely on local data instead of updating before checking.
