@@ -665,6 +665,8 @@ git commit -m 'changed'
 magic sync
 ````
 
+We didn't really have to do the `git commit` step -- `magic sync` would have done that for us -- but committing let us put in our own comment.
+
 # Syncing the edits
 
 To get the file to the stick, 
