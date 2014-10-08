@@ -58,7 +58,7 @@ so make sure to **not close your shell**
 **Linux 32 Bit:**
 
 ````shell
-cd ; wget 'http://bit.ly/tuxmagic32'
+cd ; wget 'http://bit.ly/tuxmagic32' -O git-annex-standalone-i386.tar.gz
 ````
 
   <!-- 'http://downloads.kitenet.net/\
@@ -68,7 +68,7 @@ cd ; wget 'http://bit.ly/tuxmagic32'
 **Linux 64 Bit:**
 
 ````shell
-cd ; wget 'http://bit.ly/tuxmagic64'
+cd ; wget 'http://bit.ly/tuxmagic64' -O git-annex-standalone-i386.tar.gz
 ````
 
   <!-- 'http://downloads.kitenet.net/\
