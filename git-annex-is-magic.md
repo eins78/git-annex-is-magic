@@ -440,7 +440,7 @@ ls foo/bar.txt # foo/bar.txt
 
 We don't have the file's **content** yet, \
 because we have not transfered it 
-(just it's *meta data*). 
+(just its *meta data*). 
 
 We'll call this: "The file is **unavailable**".
 
