@@ -509,7 +509,7 @@ magic sync
 
 # wait…, **what?**{data-background="http://upload.wikimedia.org/wikipedia/tr/0/05/Matrix_yeni_nesil_ajanlar.jpg"}
 
-> **`drop`ing?**
+> **`drop`ping?**
 > \
 > \
 > Isn't that a fancy word to say **`DELETE`**?
