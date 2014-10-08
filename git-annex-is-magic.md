@@ -544,12 +544,12 @@ failed
 git-annex: drop: 1 failed
 ````
 
-# ok, let's **`move`**
+# ok, let's **`copy`**
 
-What if I just want to move a file to the stick?
+What if I want to push a file to the stick?
 
-- **`move --to`** a remote
-- *also:* **`copy --to`**!
+- **`copy --to`** a remote
+- *also:* **`move --to`**!
     
 
 ````shell
