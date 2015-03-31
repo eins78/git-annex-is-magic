@@ -58,7 +58,7 @@ so make sure to **not close your shell**
 **Linux 32 Bit:**
 
 ````shell
-cd ; wget 'http://bit.ly/tuxmagic32'
+cd ; wget 'http://bit.ly/tuxmagic32' -O git-annex-standalone-i386.tar.gz
 ````
 
   <!-- 'http://downloads.kitenet.net/\
@@ -68,7 +68,7 @@ cd ; wget 'http://bit.ly/tuxmagic32'
 **Linux 64 Bit:**
 
 ````shell
-cd ; wget 'http://bit.ly/tuxmagic64'
+cd ; wget 'http://bit.ly/tuxmagic64' -O git-annex-standalone-i386.tar.gz
 ````
 
   <!-- 'http://downloads.kitenet.net/\
@@ -193,7 +193,7 @@ sudo ln -s "$APP/git-annex{,-shell} /usr/bin/."
 ````
 
 ````shell
-sudo ln -s "$APP/bundle /usr/bin/bundle"
+sudo ln -s "$APP/bundle /usr/bin/bundle" # on Linux, there is no $APP/bundle
 ````
 
 # Workflow
@@ -307,7 +307,7 @@ STICK="/Volumes/USBSTICK"
 **Clone:**
 
 ````shell
-git clone ~/magicfolder "$STICK/magicfolder"
+git clone file://$HOME/magicfolder "$STICK/magicfolder"
 ````
 
 *Alternative Clone: **`SSH`***
@@ -440,7 +440,7 @@ ls foo/bar.txt # foo/bar.txt
 
 We don't have the file's **content** yet, \
 because we have not transfered it 
-(just it's *meta data*). 
+(just its *meta data*). 
 
 We'll call this: "The file is **unavailable**".
 
@@ -509,7 +509,7 @@ magic sync
 
 # wait…, **what?**{data-background="http://upload.wikimedia.org/wikipedia/tr/0/05/Matrix_yeni_nesil_ajanlar.jpg"}
 
-> **`drop`ing?**
+> **`drop`ping?**
 > \
 > \
 > Isn't that a fancy word to say **`DELETE`**?
@@ -544,12 +544,12 @@ failed
 git-annex: drop: 1 failed
 ````
 
-# ok, let's **`move`**
+# ok, let's **`copy`**
 
-What if I just want to move a file to the stick?
+What if I want to push a file to the stick?
 
-- **`move --to`** a remote
-- *also:* **`copy --to`**!
+- **`copy --to`** a remote
+- *also:* **`move --to`**!
     
 
 ````shell
@@ -664,6 +664,8 @@ git commit -m 'changed'
 ````shell
 magic sync
 ````
+
+We didn't really have to do the `git commit` step -- `magic sync` would have done that for us -- but committing let us put in our own comment.
 
 # Syncing the edits
 
@@ -935,7 +937,7 @@ internals
 - apart from that, **everything done manually** still works!
 
 
-# tipps & tricks
+# tips & tricks
 
 - **`--fast`** do stuff faster. \
   For example, rely on local data instead of updating before checking.
