@@ -1,3 +1,6 @@
+% git-annex is magic
+% eins78 and contributors
+
 # **`git-annex` is magic**{data-state="start" data-background="http://upload.wikimedia.org/wikipedia/it/0/00/Matrix_Neo.jpg"}
 
 > **a `shell adventure`**
@@ -10,14 +13,14 @@
 > **This is a `shell adventure`**
 
 ````small
-You can (safely) follow along by typing or copying 
+You can (safely) follow along by typing or copying
 all the commands into your terminal.
 
-You'll need a relatively recent Linux or Mac system, and maybe 
-an USB stick. The Stick can be simulated by any folder 
+You'll need a relatively recent Linux or Mac system, and maybe
+an USB stick. The Stick can be simulated by any folder
 on the computer, so you can also try it out on any machine.
 
-Commands are lines start start with a '$' sign, 
+Commands are lines start start with a '$' sign,
 the '$' is not part of the command.
 ````
 
@@ -48,12 +51,20 @@ are using `git` or `git annex`.
 alias magic="git annex"
 ````
 
-We will be defining more variables in 
+We will be defining more variables in
 this adventure, \
-so make sure to **not close your shell** 
+so make sure to **not close your shell**
 (or edit `.bashrc`).
 
-# Download
+# Download and Install
+
+Official instructions and downloads
+for every OS are here:
+
+<https://git-annex.branchable.com/install/>
+
+
+# Download Shortlinks
 
 **Linux 32 Bit:**
 
@@ -206,7 +217,7 @@ sudo ln -s "$APP/bundle /usr/bin/bundle" # on Linux, there is no $APP/bundle
 
 # **`magic init`**{#init}
 
-We start with a new folder. 
+We start with a new folder.
 This could be your new Dropbox.
 
 ````shell
@@ -233,7 +244,7 @@ magic init 'My Laptop'
 
 # **`magic add`**
 
-We make a sub-folder with 
+We make a sub-folder with
 a new text file inside.
 
 ````shell
@@ -262,13 +273,13 @@ git commit -m 'added'
 
 # **`magic sync`**
 
-To make things easier, you can 
+To make things easier, you can
 always use **`sync`**.
 
-Should be done **after every change** 
+Should be done **after every change**
 (or in intervals w/ `cron`).
 
-It does the following: 
+It does the following:
 
 - auto-**commit**
 - **push** to all remotes
@@ -295,9 +306,9 @@ magic sync
 Now clone this repo
 using any *git transport* (`file`, `ssh`, `https`,…).
 
-Note that **`file`** works with everything
-you can somehow mount,  
-including **Dropbox**.
+Note that **`file` works with everything
+you can mount** somehow,  
+including **Dropbox**, SFTP, SMB, NFS, etc..
 
 ````shell
 STICK="/Volumes/USBSTICK"
@@ -326,7 +337,7 @@ cd "$STICK/magicfolder"
 magic init 'My USB Stick'
 ````
 
-    init My USB Stick 
+    init My USB Stick
     ok
     (Recording state in git...)
 
@@ -341,9 +352,9 @@ magic sync
     (Recording state in git...)
     commit  
     ok
-    pull origin 
+    pull origin
     ok
-    push origin 
+    push origin
     Writing objects: 100% (8/8), 776 bytes …
      * [new branch] git-annex -> synced/git-annex
     ok
@@ -358,6 +369,13 @@ ls foo/bar.txt
 ````
 
     foo/bar.txt
+
+#
+
+*(bear with me for a second)*
+
+<iframe src="//giphy.com/embed/Vaswdccu781aw?html5=true" width="480" height="480" frameBorder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
 
 # connect the remotes
 
@@ -393,7 +411,7 @@ git remote add laptop ~/magicfolder
 
 # **`magic sync`** #3
 
-With the configured remotes, **`sync`** now 
+With the configured remotes, **`sync`** now
 also does **`pull`** and **`push`**.
 
 ````shell
@@ -408,7 +426,7 @@ magic sync
 (merging synced/git-annex into git-annex...)
 commit  
 ok
-pull stick 
+pull stick
 From /Volumes/USBSTICK/magicfolder
  * [new branch] git-annex  -> stick/git-annex
  * [new branch] master     -> stick/master
@@ -420,7 +438,7 @@ ok
 
 We have just cloned the meta data.
 
-All the files and folder are on the stick, 
+All the files and folder are on the stick,
 **as symlinks**!
 
 **`magic`** takes care of the symlinks.
@@ -439,8 +457,8 @@ ls foo/bar.txt # foo/bar.txt
 # Just symlinks
 
 We don't have the file's **content** yet, \
-because we have not transfered it 
-(just its *meta data*). 
+because we have not transfered it
+(just its *meta data*).
 
 We'll call this: "The file is **unavailable**".
 
@@ -460,7 +478,7 @@ If we get a listing, we see where the symlinks points to \
 ls -l foo/bar.txt
 ````
 
-    lrwxrwxrwx  1 mfa  staff  191 Nov 28 14:02 
+    lrwxrwxrwx  1 mfa  staff  191 Nov 28 14:02
     foo/bar.txt -> ../.git/annex/objects/FP/vj/
     SHA256E-s11--9062535d58….txt/
     SHA256E-s11--9062535d58….txt
@@ -485,7 +503,7 @@ cat foo/bar.txt
 
 # **`magic drop`** a file
 
-To delete a file just from 
+To delete a file just from
 a remote, use `drop`.
 
 This is useful for making free
@@ -537,7 +555,7 @@ magic drop foo/bar.txt
 
 ````small
 drop foo/bar.txt (merging synced/git-annex into git-annex...)
-(unsafe) 
+(unsafe)
   Could only verify the existence of 0 out of 1 necessary copies
   (Use --force to override this check, or adjust annex.numcopies.)
 failed
@@ -550,7 +568,7 @@ What if I want to push a file to the stick?
 
 - **`copy --to`** a remote
 - *also:* **`move --to`**!
-    
+
 
 ````shell
 cd ~/magicfolder/
@@ -561,7 +579,7 @@ magic copy foo/bar.txt --to stick
 ````
 
 ````small
-copy foo/bar.txt (to stick...) 
+copy foo/bar.txt (to stick...)
 SHA256E-s11--9062535d58….txt
   11 100%    0.00kB/s    0:00:00 (xfer#1, to-check=0/1)
 
@@ -573,9 +591,9 @@ ok
 
 # **`magic whereis`**
 
-We can also just get a list of a 
+We can also just get a list of a
 file availability in other remotes, \
-without trying to drop it: 
+without trying to drop it:
 
 ````shell
 cd ~/magicfolder
@@ -586,7 +604,7 @@ magic whereis foo/bar.txt
 ````
 
 ````small
-whereis foo/bar.txt (2 copies) 
+whereis foo/bar.txt (2 copies)
   	ab8aad2f-f87e-440e-baef-… -- here (My Laptop)
    	f7feb954-0250-4117-a368-… -- stick (My USB Stick)
 ok
@@ -600,12 +618,12 @@ ok
 - **Not ok?**
 
     - remove all
-    
+
     ````{.shell .small}
     cd ; \
     sudo rm -rf \
     ~/magicfolder \
-    "$STICK/magicfolder" 
+    "$STICK/magicfolder"
     ````
 
     - `GOTO` **[init](#init)**
@@ -623,9 +641,9 @@ ok
 
 Files are locked by default!
 
-Also, while the **content** 
+Also, while the **content**
 is not tracked in git by **`magic`**, \
-you can still commit with git, and **`magic`** 
+you can still commit with git, and **`magic`**
 will take of it (w/ `git-hooks`).
 
 ````shell
@@ -658,18 +676,20 @@ magic add foo/bar.txt
 ````
 
 ````shell
-git commit -m 'changed'
+git commit -m 'changed foo bar'
 ````
 
 ````shell
 magic sync
 ````
 
-We didn't really have to do the `git commit` step -- `magic sync` would have done that for us -- but committing let us put in our own comment.
+*Note:* We didn't really have to `git commit`! \
+`magic sync` would have done that for us, \
+but committing let us put in our own message.
 
 # Syncing the edits
 
-To get the file to the stick, 
+To get the file to the stick,
 
 ````shell
 cd "$STICK/magicfolder"
@@ -695,8 +715,8 @@ cat foo/bar.txt
 
 > Doesn't this locking/unlocking seem complicated \
 > in comparison to, say, *Dropbox*?
-> 
-> **YES.** That is why we use ***'direct mode'***. 
+>
+> **YES.** That is why we use ***'direct mode'***.
 
 # direct mode
 
@@ -771,16 +791,16 @@ cat foo/bar.txt # > "pow"
 **Usage:** If you just want to copy somewhere,
 for *backup* or *transfer*.
 
-If you'll look at the directory, 
+If you'll look at the directory,
 it will just be a bunch of object files.
 
-Special remotes are (`GPG`) [encrypted][encryption] 
+Special remotes are (`GPG`) [encrypted][encryption]
 by default, \
-so you have to explicitly turn it off 
+so you have to explicitly turn it off
 (`encryption=none`).
 
 Once setup with **`initremote`**, \
-**`magic`** can 
+**`magic`** can
 use them like any other remote – it *just works*™.
 
 # encrypted folder in Dropbox
@@ -789,16 +809,17 @@ The remote will have a name and a GPG key.
 
 ```shell
 BOX=dropbox # how to call the remote
+BOX_PATH="~/Dropbox/BACKUP/magic/"
 ```
 
 ```shell
-KEY=965113EA # your GPG key id
+KEY=965113EA # YOUR GPG keyid - don't take mine ;)
 ```
 
 **Make a new folder in the Dropbox:**
 
 ```shell
-mkdir -p ~/Dropbox/BACKUP/magic/
+mkdir -p "$BOX_PATH"
 ```
 
 ````shell
@@ -807,20 +828,20 @@ cd ~/magicfolder
 
 ```shell
 magic initremote $BOX type=directory \
-directory=~/Dropbox/BACKUP/magic/ \
+directory="$BOX_PATH" \
 keyid=$KEY
 ```
 
 ```
-initremote dropbox (encryption setup) 
+initremote dropbox (encryption setup)
 (hybrid cipher with gpg key 3771835A3BADB56D) ok
 ```
 
-***Alternative** if you don't have a key handy (unecrypted):*
+***Alternative*** *if you don't have a key handy (unecrypted):*
 
 ```{.shell .alt}
 magic initremote $BOX type=directory \
-directory=~/Dropbox/BACKUP/magic/ \
+directory="$BOX_PATH" \
 encryption=none
 ```
 
@@ -838,7 +859,7 @@ magic copy . --to $BOX
 ```
 
 ```small
-copy foo/bar.txt (gpg) 
+copy foo/bar.txt (gpg)
 You need a passphrase to unlock the secret key for
 user: "Max F. Albrecht <1@178.is>"
 4096-bit RSA key, ID 965113EA, created 2013 (main key ID FOO)
@@ -859,7 +880,7 @@ ok
 - [More in the Docs][sremotes]
 
 
-# more backends 
+# more backends
 
 - how files are matched with
 they meta data. \
@@ -887,7 +908,7 @@ and the indirect mode for normal git repos + magic.
 
 Use **`sync`** to **sync meta data** between remotes.
 
-Use **`get`**, **`drop`**, **`copy`** and **`move`** 
+Use **`get`**, **`drop`**, **`copy`** and **`move`**
 to **sync content** between remotes.
 
 > **`Questions?`**
@@ -988,7 +1009,7 @@ body .reveal h1 {
 .reveal pre {
   font-size: 1em;
 }
-.reveal ul pre code, 
+.reveal ul pre code,
 .reveal ol pre code {
   width: 120%;
 }
